@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     } private set
     {
         _isMoving = value;
-        animator.SetBool("isMoving", value);
+        animator.SetBool(AnimationStrings.isMoving, value);
     } }
 
     // Untuk Player Lari
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     } private set
     {
         _isRunning = value;
-        animator.SetBool("isRunning", value);
+        animator.SetBool(AnimationStrings.isRunning, value);
     } }
 
     private void Awake()
