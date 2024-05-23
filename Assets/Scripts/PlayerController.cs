@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
     Vector2 moveInput;
+    TouchingDirections touchingDirections;
+    public float jumpImpulse = 10f;
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
 
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
     // Untuk Mengatur Move Speed Player
     public float CurrentMoveSpeed { get
     {
-        if(IsMoving)
+        if(IsMoving && !touchingDirections.IsOnWall)
         {
             if(IsRunning)
             {
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
     void Start()
@@ -90,6 +93,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
 
     // Untuk Mengatur Arah Player Menghadap
@@ -125,6 +129,17 @@ public class PlayerController : MonoBehaviour
         } else if(context.canceled)
         {
             IsRunning = false;
+        }
+    }
+
+    // Input Action untuk Player Lompat
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        // Untuk Cek Apakah Player Masih Hidup
+        if(context.started && touchingDirections.IsGrounded) // && CanMove
+        {
+            animator.SetTrigger(AnimationStrings.jumpTrigger);
+            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
     }
 }
