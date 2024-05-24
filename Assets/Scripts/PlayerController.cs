@@ -30,24 +30,40 @@ public class PlayerController : MonoBehaviour
         _isFacingRight = value;
     } }
 
+    // Mendeteksi Pergerakan Player
+    public bool CanMove { get
+        {
+            return animator.GetBool(AnimationStrings.canMove);
+        }
+    }
+
     // Untuk Mengatur Move Speed Player
     public float CurrentMoveSpeed { get
-    {
-        if(IsMoving && !touchingDirections.IsOnWall)
         {
-            if(IsRunning)
+            if(CanMove)
             {
-                return runSpeed;
+                if(IsMoving && !touchingDirections.IsOnWall)
+                {
+                    if(IsRunning)
+                    {
+                        return runSpeed;
+                    } else
+                    {
+                        return walkSpeed;
+                    }
+                } else
+                {
+                    // Kecepatan Idle adalah 0
+                    return 0;
+                }
             } else
             {
-                return walkSpeed;
+                // Pergerakan Dikunci
+                return 0;
             }
-        } else
-        {
-            // Idle Speed
-            return 0;
+            
         }
-    }}
+    }
 
     // Untuk Player Gerak
     [SerializeField]
@@ -136,10 +152,19 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // Untuk Cek Apakah Player Masih Hidup
-        if(context.started && touchingDirections.IsGrounded) // && CanMove
+        if(context.started && touchingDirections.IsGrounded && CanMove)
         {
             animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
+    }
+
+    // Input Action untuk Player Dapat Menyerang
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            animator.SetTrigger(AnimationStrings.attackTrigger);
         }
     }
 }
