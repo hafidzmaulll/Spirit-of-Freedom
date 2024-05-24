@@ -37,6 +37,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsAlive
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.isAlive);
+        }
+    }
+
     // Untuk Mengatur Move Speed Player
     public float CurrentMoveSpeed { get
         {
@@ -131,9 +139,14 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
 
-        IsMoving = moveInput != Vector2.zero;   
-
-        SetFacingDirection(moveInput);
+        if(IsAlive)
+        {
+            IsMoving = moveInput != Vector2.zero;
+            SetFacingDirection(moveInput);
+        } else
+        {
+            IsMoving = false;
+        }
     }
 
     // Input Action untuk Player Lari
