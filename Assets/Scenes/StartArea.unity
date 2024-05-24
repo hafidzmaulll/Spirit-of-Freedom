@@ -1857,6 +1857,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   followTarget: {fileID: 984773475}
+--- !u!114 &1548225545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8165225462935285512, guid: e88bf9001ce1f424eae4c67b2d3ea0f0, type: 3}
+  m_PrefabInstance: {fileID: 2350813518416265061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44ddc747516af449a8105d804f98172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1595301803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,6 +2271,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6406559888866587835, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
+      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406559888866587835, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
+      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1548225545}
+    - target: {fileID: 6406559888866587835, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
+      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406559888866587835, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
+      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406559888866587835, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
+      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406559888866587835, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
+      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8072947241284402757, guid: 89a9a200da2dd9342a89145774ee8e1e, type: 3}
       propertyPath: m_Name
       value: ChargerEnemy
