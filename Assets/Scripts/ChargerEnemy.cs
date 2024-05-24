@@ -6,12 +6,16 @@ using UnityEngine;
 public class ChargerEnemy : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator animator;
     TouchingDirections touchingDirections;
 
     private Vector2 walkDirectionVector = Vector2.right;
     private WalkableDirection _walkDirection;
-    public enum WalkableDirection { Right, Left }
+    public DetectionZone attackZone;
+    public DetectionZone cliffDetectionZone;
     public float walkSpeed = 3f;
+    public float walkSpeedOnAttack = 6f;
+    public enum WalkableDirection { Right, Left }
 
     public WalkableDirection WalkDirection
     {
@@ -37,9 +41,28 @@ public class ChargerEnemy : MonoBehaviour
         }
     }
 
+    public bool _hasTarget = false;
+    public bool HasTarget { get
+    {
+        return _hasTarget;
+    } private set
+    {
+        _hasTarget = value;
+        animator.SetBool(AnimationStrings.hasTarget, value);
+    } }
+
+    // public float AttackCooldown { get
+    // {
+    //     return animator.GetFloat(AnimationStrings.attackCooldown);
+    // } private set
+    // {
+    //     animator.SetFloat(AnimationStrings.attackCooldown, Mathf.Max(value, 0));
+    // } }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
     }
 
@@ -52,7 +75,13 @@ public class ChargerEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        HasTarget = attackZone.detectedColliders.Count > 0;
+
+        // if(AttackCooldown > 0)
+        // {
+        //     AttackCooldown -= Time.deltaTime;
+        // }
+            
     }
 
     private void FixedUpdate()
@@ -62,7 +91,13 @@ public class ChargerEnemy : MonoBehaviour
             FlipDirection();
         }
 
-        rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        if(HasTarget)
+        {
+            rb.velocity = new Vector2(walkSpeedOnAttack * walkDirectionVector.x, rb.velocity.y);
+        } else
+        {
+            rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        }
     }
 
     private void FlipDirection()
