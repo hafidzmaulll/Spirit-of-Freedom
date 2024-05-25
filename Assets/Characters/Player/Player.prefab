@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 47977144307826540}
   - component: {fileID: 5298630330086289853}
   - component: {fileID: 4337498747997679864}
-  - component: {fileID: 8070646656838941673}
   - component: {fileID: 8165225462935285512}
   - component: {fileID: 249532002062752813}
+  - component: {fileID: 8070646656838941673}
   - component: {fileID: 1892596639247744312}
   - component: {fileID: 8912430590349088590}
   m_Layer: 7
@@ -154,38 +154,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.1856327, y: -4.2703094}
   m_Size: {x: 36.06081, y: 99.18705}
   m_Direction: 0
---- !u!114 &8070646656838941673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6122693692346427990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de19e7130abe4a489681516bd6e6b1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8165225462935285512}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _maxHealth: 100
-  _health: 100
-  isInvincible: 0
-  invincibilityTime: 1
-  _isAlive: 1
 --- !u!114 &8165225462935285512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +204,38 @@ MonoBehaviour:
   _isGrounded: 0
   _isOnWall: 0
   _isOnCeiling: 0
+--- !u!114 &8070646656838941673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122693692346427990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de19e7130abe4a489681516bd6e6b1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageableHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8165225462935285512}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _maxHealth: 100
+  _health: 100
+  isInvincible: 0
+  invincibilityTime: 1
+  _isAlive: 1
 --- !u!114 &1892596639247744312
 MonoBehaviour:
   m_ObjectHideFlags: 0
