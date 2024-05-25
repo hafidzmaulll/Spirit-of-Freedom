@@ -8,6 +8,7 @@ public class Damageable : MonoBehaviour
     Animator animator;
 
     public UnityEvent<float, Vector2> damageableHit;
+    public UnityEvent<float, float> healthChanged;
     
     [SerializeField]
     private float _maxHealth = 100;
@@ -34,6 +35,7 @@ public class Damageable : MonoBehaviour
         set
         {
             _health = value;
+            healthChanged?.Invoke(_health, MaxHealth);
 
             // Jika Nyawa dibawah 0 Maka Player Tidak Hidup
             if(_health <= 0)
