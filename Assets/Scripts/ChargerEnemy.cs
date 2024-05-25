@@ -115,7 +115,7 @@ public class ChargerEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
+        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall || cliffDetectionZone.detectedColliders.Count == 0)
         {
             FlipDirection();
         }
@@ -156,12 +156,11 @@ public class ChargerEnemy : MonoBehaviour
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 
-    // public void OnCliffDetected()
-    // {
-    //     if (touchingDirections != null && touchingDirections.IsGrounded)
-    //     {
-    //         FlipDirection();
-    //     }
-    // }
+    public void OnCliffDetected()
+    {
+        if (touchingDirections != null && touchingDirections.IsGrounded)
+        {
+            FlipDirection();
+        }
+    }
 }
-//  || cliffDetectionZone.detectedColliders.Count == 0
