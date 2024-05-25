@@ -16,6 +16,14 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
 
+    // Buat Dash
+    private float dashingPower = 960f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 2f;
+    private bool canDash = true;
+    private bool isDashing;
+    [SerializeField] private TrailRenderer tr;
+
     // Merubah Sebaliknya Arah Player Menghadap
     public bool _isFacingRight = true;
     public bool IsFacingRight { get
@@ -113,11 +121,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Buat Dash
+        if(isDashing)
+        {
+            return;
+        }
 
+        if(Input.GetKeyDown(KeyCode.LeftControl) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     private void FixedUpdate()
     {
+        if(isDashing)
+        {
+            return;
+        }
+        
         if(!damageable.LockVelocity)
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
 
@@ -188,5 +210,22 @@ public class PlayerController : MonoBehaviour
     public void OnHit(float damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+
+    // Buat Dash
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
