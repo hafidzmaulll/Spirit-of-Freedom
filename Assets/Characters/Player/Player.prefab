@@ -170,6 +170,7 @@ MonoBehaviour:
   jumpImpulse: 8
   walkSpeed: 5
   runSpeed: 8
+  tr: {fileID: 1320435103758777845}
   _isFacingRight: 1
   _isMoving: 0
   _isRunning: 0

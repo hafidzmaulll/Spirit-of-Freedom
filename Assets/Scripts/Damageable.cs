@@ -34,10 +34,10 @@ public class Damageable : MonoBehaviour
         }
         set
         {
-            _health = value;
+            _health = Mathf.Clamp(value, 0, MaxHealth); // Clamp the health value between 0 and MaxHealth
             healthChanged?.Invoke(_health, MaxHealth);
 
-            // Jika Nyawa dibawah 0 Maka Player Tidak Hidup
+            // If health is 0 or less, set IsAlive to false
             if(_health <= 0)
             {
                 IsAlive = false;
@@ -133,7 +133,7 @@ public class Damageable : MonoBehaviour
             float maxHeal = Mathf.Max(MaxHealth - Health, 0);
             float actualHeal = Mathf.Min(maxHeal, healthRestore);
             Health += actualHeal;
-            CharacterEvents.characterHealed(gameObject, actualHeal);
+            CharacterEvents.characterHealed.Invoke(gameObject, actualHeal);
             return true;
         }
         return false;
