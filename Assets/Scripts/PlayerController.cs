@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     private Checkpoint currentCheckpoint;
 
-    // Buat Dash
+    // Dash variables
     private float dashingPower = 960f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 2f;
@@ -25,93 +24,79 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
     [SerializeField] private TrailRenderer tr;
 
-    // Merubah Sebaliknya Arah Player Menghadap
+    // Player facing direction
     public bool _isFacingRight = true;
-    public bool IsFacingRight { get
+    public bool IsFacingRight
     {
-        return _isFacingRight;
-    } private set
-    {
-        if(_isFacingRight != value)
+        get { return _isFacingRight; }
+        private set
         {
-            // Merubah Sebaliknya Arah Player Menghadap
-            transform.localScale *= new Vector2(-1, 1);
+            if (_isFacingRight != value)
+            {
+                transform.localScale *= new Vector2(-1, 1);
+            }
+            _isFacingRight = value;
         }
-        _isFacingRight = value;
-    } }
+    }
 
-    // Mendeteksi Pergerakan Player
-    public bool CanMove { get
-        {
-            return animator.GetBool(AnimationStrings.canMove);
-        } private set
-        {
-            animator.SetBool(AnimationStrings.canMove, value);
-        }
+    // Player movement and state
+    public bool CanMove
+    {
+        get { return animator.GetBool(AnimationStrings.canMove); }
+        private set { animator.SetBool(AnimationStrings.canMove, value); }
     }
 
     public bool IsAlive
     {
+        get { return animator.GetBool(AnimationStrings.isAlive); }
+        private set { animator.SetBool(AnimationStrings.isAlive, value); }
+    }
+
+    public float CurrentMoveSpeed
+    {
         get
         {
-            return animator.GetBool(AnimationStrings.isAlive);
-        } private set
-        {
-            animator.SetBool(AnimationStrings.isAlive, value);
-        }
-    }
-
-    // Untuk Mengatur Move Speed Player
-    public float CurrentMoveSpeed { get
-        {
-            if(CanMove)
+            if (CanMove)
             {
-                if(IsMoving && !touchingDirections.IsOnWall)
+                if (IsMoving && !touchingDirections.IsOnWall)
                 {
-                    if(IsRunning)
-                    {
-                        return runSpeed;
-                    } else
-                    {
-                        return walkSpeed;
-                    }
-                } else
+                    return IsRunning ? runSpeed : walkSpeed;
+                }
+                else
                 {
-                    // Kecepatan Idle adalah 0
                     return 0;
                 }
-            } else
+            }
+            else
             {
-                // Pergerakan Dikunci
                 return 0;
             }
-            
         }
     }
 
-    // Untuk Player Gerak
     [SerializeField]
     private bool _isMoving = false;
-    public bool IsMoving { get
+    public bool IsMoving
     {
-        return _isMoving;
-    } private set
-    {
-        _isMoving = value;
-        animator.SetBool(AnimationStrings.isMoving, value);
-    } }
+        get { return _isMoving; }
+        private set
+        {
+            _isMoving = value;
+            animator.SetBool(AnimationStrings.isMoving, value);
+        }
+    }
 
-    // Untuk Player Lari
     [SerializeField]
     private bool _isRunning = false;
-    public bool IsRunning { get
+    public bool IsRunning
     {
-        return _isRunning;
-    } private set
-    {
-        _isRunning = value;
-        animator.SetBool(AnimationStrings.isRunning, value);
-    } }
+        get { return _isRunning; }
+        private set
+        {
+            _isRunning = value;
+            animator.SetBool(AnimationStrings.isRunning, value);
+        }
+    }
 
     private void Awake()
     {
@@ -125,23 +110,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
     {
-        if(DialogueManager.isActive == true)
-        {
-            return;
-        }
-        
-        // Buat Dash
-        if(isDashing)
+        if (DialogueManager.isActive)
         {
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl) && canDash)
+        if (isDashing)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -149,73 +132,68 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isDashing)
+        if (isDashing)
         {
             return;
         }
-        
-        if(!damageable.LockVelocity)
+
+        if (!damageable.LockVelocity)
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
 
         animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
 
-    // Untuk Mengatur Arah Player Menghadap
     private void SetFacingDirection(Vector2 moveInput)
     {
-        if(moveInput.x > 0 && !IsFacingRight)
+        if (moveInput.x > 0 && !IsFacingRight)
         {
-            // Player Menghadap ke Kanan
             IsFacingRight = true;
-
-        } else if(moveInput.x < 0 && IsFacingRight)
+        }
+        else if (moveInput.x < 0 && IsFacingRight)
         {
-            // Player Menghadap ke Kiri
             IsFacingRight = false;
         }
     }
-    // Input Action untuk Player Gerak
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
 
-        if(IsAlive)
+        if (IsAlive)
         {
             IsMoving = moveInput != Vector2.zero;
             SetFacingDirection(moveInput);
-        } else
+        }
+        else
         {
             IsMoving = false;
         }
     }
 
-    // Input Action untuk Player Lari
     public void OnRun(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (context.started)
         {
             IsRunning = true;
-        } else if(context.canceled)
+        }
+        else if (context.canceled)
         {
             IsRunning = false;
         }
     }
 
-    // Input Action untuk Player Lompat
     public void OnJump(InputAction.CallbackContext context)
     {
-        // Untuk Cek Apakah Player Masih Hidup
-        if(context.started && touchingDirections.IsGrounded && CanMove)
+        if (context.started && touchingDirections.IsGrounded && CanMove)
         {
             animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
     }
 
-    // Input Action untuk Player Dapat Menyerang
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (context.started)
         {
             animator.SetTrigger(AnimationStrings.attackTrigger);
         }
@@ -226,7 +204,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 
-    // Buat Dash
     private IEnumerator Dash()
     {
         canDash = false;
@@ -245,22 +222,33 @@ public class PlayerController : MonoBehaviour
 
     private void OnHealthChanged(float health, float MaxHealth)
     {
-        if(health <= 0)
+        if (health <= 0)
         {
-            StartCoroutine(Respawn());
+            StartCoroutine(RespawnAfterDelay());
         }
     }
-    
+
     public void SetCheckpoint(Checkpoint checkpoint)
     {
         currentCheckpoint = checkpoint;
     }
 
-    private IEnumerator Respawn()
+    public void InstantDeath()
     {
-        yield return new WaitForSeconds(2f);
+        damageable.InstantKill();
+        StartCoroutine(RespawnAfterDelay());
+    }
 
-        if(currentCheckpoint != null)
+    private IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(2f); // Adjust this delay as necessary
+
+        Respawn();
+    }
+
+    private void Respawn()
+    {
+        if (currentCheckpoint != null)
         {
             transform.position = currentCheckpoint.transform.position;
             damageable.Health = damageable.MaxHealth;
@@ -268,13 +256,12 @@ public class PlayerController : MonoBehaviour
 
             damageable.IsAlive = true;
             CanMove = true;
-            IsMoving = true;
-            IsRunning = true;
-
-            yield return null;
-        } else
+            IsMoving = false;
+            IsRunning = false;
+        }
+        else
         {
-            Debug.LogWarning("No chechpoint set");
+            Debug.LogWarning("No checkpoint set");
         }
     }
 }

@@ -41,6 +41,7 @@ public class Damageable : MonoBehaviour
             if(_health <= 0)
             {
                 IsAlive = false;
+                animator.SetTrigger(AnimationStrings.deathTrigger);
             }
         }
     }
@@ -137,5 +138,12 @@ public class Damageable : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void InstantKill()
+    {
+        Health = 0;
+        animator.SetTrigger(AnimationStrings.deathTrigger);
+        IsAlive = false;
     }
 }
