@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float jumpImpulse = 10f;
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
+    private Checkpoint currentCheckpoint;
 
     // Buat Dash
     private float dashingPower = 960f;
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public bool CanMove { get
         {
             return animator.GetBool(AnimationStrings.canMove);
+        } private set
+        {
+            animator.SetBool(AnimationStrings.canMove, value);
         }
     }
 
@@ -51,6 +55,9 @@ public class PlayerController : MonoBehaviour
         get
         {
             return animator.GetBool(AnimationStrings.isAlive);
+        } private set
+        {
+            animator.SetBool(AnimationStrings.isAlive, value);
         }
     }
 
@@ -112,6 +119,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
+
+        damageable.healthChanged.AddListener(OnHealthChanged);
     }
 
     void Start()
@@ -227,5 +236,40 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private void OnHealthChanged(float health, float MaxHealth)
+    {
+        if(health <= 0)
+        {
+            StartCoroutine(Respawn());
+        }
+    }
+    
+    public void SetCheckpoint(Checkpoint checkpoint)
+    {
+        currentCheckpoint = checkpoint;
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if(currentCheckpoint != null)
+        {
+            transform.position = currentCheckpoint.transform.position;
+            damageable.Health = damageable.MaxHealth;
+            rb.velocity = Vector2.zero;
+
+            damageable.IsAlive = true;
+            CanMove = true;
+            IsMoving = true;
+            IsRunning = true;
+
+            yield return null;
+        } else
+        {
+            Debug.LogWarning("No chechpoint set");
+        }
     }
 }
