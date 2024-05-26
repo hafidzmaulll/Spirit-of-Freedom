@@ -130,6 +130,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(DialogueManager.isActive == true)
+        {
+            return;
+        }
+        
         // Buat Dash
         if(isDashing)
         {
