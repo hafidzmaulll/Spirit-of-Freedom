@@ -378,8 +378,8 @@ MonoBehaviour:
   healthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 100
+  _maxHealth: 30
+  _health: 30
   isInvincible: 0
   invincibilityTime: 0.25
   _isAlive: 1
