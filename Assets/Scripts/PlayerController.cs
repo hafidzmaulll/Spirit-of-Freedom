@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
 {
+    AudioSource AudioSource;
     Rigidbody2D rb;
     Animator animator;
     Vector2 moveInput;
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        AudioSource.GetComponent<AudioSource>().Play(); 
     }
 
     void Update()
@@ -188,6 +190,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            AudioSource.Play();
         }
     }
 
