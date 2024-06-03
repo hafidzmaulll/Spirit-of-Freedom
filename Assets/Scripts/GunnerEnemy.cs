@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class GunnerEnemy : MonoBehaviour
 {
+    AudioSource audioSource;
     Animator animator;
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
@@ -51,9 +52,11 @@ public class GunnerEnemy : MonoBehaviour
         if (attackZone == null) Debug.LogError("AttackZone is not assigned.");
     }
 
-    private void Start()
+    
+     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        audioSource = GetComponent<AudioSource>();
+         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -110,6 +113,7 @@ public class GunnerEnemy : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        audioSource.Play();
     }
 
     public void OnHit(float damage, Vector2 knockback)
