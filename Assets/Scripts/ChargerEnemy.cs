@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class ChargerEnemy : MonoBehaviour
 {
+    AudioSource audioSource;
     Animator animator;
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
@@ -65,6 +66,7 @@ public class ChargerEnemy : MonoBehaviour
         get
         {
             return animator != null && animator.GetBool(AnimationStrings.canMove);
+            audioSource.Play();
         }
     }
 
@@ -80,6 +82,10 @@ public class ChargerEnemy : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -154,6 +160,7 @@ public class ChargerEnemy : MonoBehaviour
     public void OnHit(float damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        
     }
 
     public void OnCliffDetected()
