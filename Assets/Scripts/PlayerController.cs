@@ -6,6 +6,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    AudioClip[] audioClip;
+    AudioSource audioSource;
+    
+   
+
     Rigidbody2D rb;
     Animator animator;
     Vector2 moveInput;
@@ -110,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+         audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -188,6 +195,9 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            audioSource.clip = audioClip[0];
+            audioSource.Play();
+            
         }
     }
 
@@ -196,6 +206,8 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimationStrings.attackTrigger);
+            audioSource.clip = audioClip[1];
+            audioSource.Play();
         }
     }
 
