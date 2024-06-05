@@ -158,11 +158,11 @@ RectTransform:
   - {fileID: 521676691}
   m_Father: {fileID: 95060189}
   m_LocalEulerAnglesHint: {x: 0.437, y: 71.518, z: -0.146}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289, y: 161}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 45}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &3998510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9133acfd7cd8f4ba5365b52dab805f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBuildIndex: 1
+  sceneBuildIndex: 2
 --- !u!61 &25154401
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7452,6 +7452,10 @@ PrefabInstance:
       value: Siti
       objectReference: {fileID: 0}
     - target: {fileID: 1191012558011158088, guid: ebc547d97f02eb14b952fb088ed880ef, type: 3}
+      propertyPath: actors.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 154138ff76813ce41894690dce9175c5, type: 3}
+    - target: {fileID: 1191012558011158088, guid: ebc547d97f02eb14b952fb088ed880ef, type: 3}
       propertyPath: messages.Array.data[0].message
       value: Para penjajah sudah mulai memasuki kota, warga lainnya sedang mencoba
         menahan mereka, hati-hati nak.
@@ -7653,6 +7657,22 @@ PrefabInstance:
     - target: {fileID: 291584235574650948, guid: d699472a07df64d409e0675f26e49006, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578049152578529074, guid: d699472a07df64d409e0675f26e49006, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 113.43884
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578049152578529074, guid: d699472a07df64d409e0675f26e49006, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 209.3953
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578049152578529074, guid: d699472a07df64d409e0675f26e49006, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.272461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578049152578529074, guid: d699472a07df64d409e0675f26e49006, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -37.193813
       objectReference: {fileID: 0}
     - target: {fileID: 6365822013788401040, guid: d699472a07df64d409e0675f26e49006, type: 3}
       propertyPath: m_Name
