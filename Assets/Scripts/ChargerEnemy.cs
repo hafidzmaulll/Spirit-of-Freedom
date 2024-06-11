@@ -66,7 +66,7 @@ public class ChargerEnemy : MonoBehaviour
         get
         {
             return animator != null && animator.GetBool(AnimationStrings.canMove);
-            audioSource.Play();
+            // audioSource.Play();
         }
     }
 
