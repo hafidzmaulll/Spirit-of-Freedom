@@ -66,7 +66,6 @@ public class ChargerEnemy : MonoBehaviour
         get
         {
             return animator != null && animator.GetBool(AnimationStrings.canMove);
-            // audioSource.Play();
         }
     }
 
@@ -86,6 +85,7 @@ public class ChargerEnemy : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -121,6 +121,13 @@ public class ChargerEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!damageable.IsAlive)
+        {
+            // Stop all movement and direction changes when the enemy is dead
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         if (touchingDirections.IsGrounded && touchingDirections.IsOnWall || cliffDetectionZone.detectedColliders.Count == 0)
         {
             FlipDirection();
@@ -160,7 +167,6 @@ public class ChargerEnemy : MonoBehaviour
     public void OnHit(float damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
-        
     }
 
     public void OnCliffDetected()
