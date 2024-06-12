@@ -38,11 +38,15 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Damageable playerDamageable = other.gameObject.GetComponent<Damageable>();
-            if(playerDamageable.IsAlive)
+            if(playerDamageable != null && playerDamageable.IsAlive)
             {
                 playerDamageable.Health -= 20;
                 Destroy(gameObject);
             }
+        }
+        else if(other.gameObject.CompareTag("Ground")) // Check if the object is tagged as Ground
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -52,15 +52,21 @@ public class GunnerEnemy : MonoBehaviour
         if (attackZone == null) Debug.LogError("AttackZone is not assigned.");
     }
 
-    
-     void Start()
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
-         player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
+        if (damageable != null && !damageable.IsAlive)
+        {
+            // If the enemy is dead, ensure it doesn't have a target
+            HasTarget = false;
+            return;
+        }
+
         if (attackZone != null)
         {
             HasTarget = attackZone.detectedColliders.Count > 0;
