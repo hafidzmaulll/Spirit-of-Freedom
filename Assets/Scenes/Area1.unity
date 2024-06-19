@@ -23477,6 +23477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8454492260309667668, guid: 91ec04f1be98ab24d82ebdebb485d6c1, type: 3}
+      propertyPath: gameCanvas
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8911497188587947404, guid: 91ec04f1be98ab24d82ebdebb485d6c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -35488,10 +35492,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1383900611}
+    - target: {fileID: 5743070448254869877, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStage1Area3
+      objectReference: {fileID: 0}
     - target: {fileID: 6632224076028250344, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1383900611}
+    - target: {fileID: 6632224076028250344, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStage1Area2
+      objectReference: {fileID: 0}
     - target: {fileID: 6772725687085935077, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
       propertyPath: m_Name
       value: SelectableArea
