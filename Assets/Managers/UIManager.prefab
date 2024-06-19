@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8911497188587947404}
   - component: {fileID: 8454492260309667668}
+  - component: {fileID: 9075066633669142412}
   - component: {fileID: 3008363051921632870}
   m_Layer: 0
   m_Name: UIManager
@@ -48,6 +49,18 @@ MonoBehaviour:
   damageTextPrefab: {fileID: 6001476894693008217, guid: a6357704a8dac944d948fc7c42fd90b7, type: 3}
   healthTextPrefab: {fileID: 6001476894693008217, guid: fd5671cb5fda8244dbf4d7fd74f1c44f, type: 3}
   gameCanvas: {fileID: 0}
+--- !u!114 &9075066633669142412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810123920848937101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaab7de73cae714191a0450c0025164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3008363051921632870
 MonoBehaviour:
   m_ObjectHideFlags: 0
