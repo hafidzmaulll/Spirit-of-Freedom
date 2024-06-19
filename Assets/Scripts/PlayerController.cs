@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,14 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     AudioClip[] audioClip;
     AudioSource audioSource;
-    
-   
 
     Rigidbody2D rb;
     Animator animator;
     Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
+    public CollectibleManager collectible;
     public float jumpImpulse = 10f;
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
@@ -274,6 +274,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.LogWarning("No checkpoint set");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Collectible"))
+        {
+            Destroy(other.gameObject);
+            collectible.gemCount ++;
         }
     }
 }
