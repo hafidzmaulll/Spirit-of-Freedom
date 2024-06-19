@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletBoss : MonoBehaviour
 {
     private float timer;
     public float force;
-    public float damage = 10f; // Set default damage to 10
+    public float damage;
     private GameObject player;
     private Rigidbody2D rb;
 
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > 10)
+        if(timer > 10)
         {
             Destroy(gameObject);
         }
@@ -36,17 +36,17 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             Damageable playerDamageable = other.gameObject.GetComponent<Damageable>();
-            if (playerDamageable != null && playerDamageable.IsAlive)
+            if(playerDamageable != null && playerDamageable.IsAlive)
             {
                 playerDamageable.Health -= damage;
                 CharacterEvents.characterDamaged?.Invoke(other.gameObject, damage); // Trigger the event
                 Destroy(gameObject);
             }
         }
-        else if (other.gameObject.CompareTag("Ground")) // Check if the object is tagged as Ground
+        else if(other.gameObject.CompareTag("Ground")) // Check if the object is tagged as Ground
         {
             Destroy(gameObject);
         }
