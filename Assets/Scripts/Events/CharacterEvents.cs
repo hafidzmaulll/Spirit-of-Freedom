@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterEvents
+public static class CharacterEvents
 {
     // Character damaged and damage value
-    public static UnityAction<GameObject, float> characterDamaged;
+    public static UnityAction<GameObject, float> characterDamaged = delegate { };
 
     // Character healed and amount healed
-    public static UnityAction<GameObject, float> characterHealed;
+    public static UnityAction<GameObject, float> characterHealed = delegate { };
 }

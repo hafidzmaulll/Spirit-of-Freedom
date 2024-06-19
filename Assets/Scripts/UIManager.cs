@@ -17,14 +17,14 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        CharacterEvents.characterDamaged += (CharacterTookDamage);
-        CharacterEvents.characterHealed += (CharacterHealed);
+        CharacterEvents.characterDamaged += CharacterTookDamage;
+        CharacterEvents.characterHealed += CharacterHealed;
     }
 
     private void OnDisable()
     {
-        CharacterEvents.characterDamaged -= (CharacterTookDamage);
-        CharacterEvents.characterHealed -= (CharacterHealed);
+        CharacterEvents.characterDamaged -= CharacterTookDamage;
+        CharacterEvents.characterHealed -= CharacterHealed;
     }
 
     public void CharacterTookDamage(GameObject character, float damageReceived)
