@@ -15842,7 +15842,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5150933199542628007, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
       propertyPath: m_Name
-      value: Under Button
+      value: Area3 Button
       objectReference: {fileID: 0}
     - target: {fileID: 5426976061470010540, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
       propertyPath: m_text
@@ -15850,7 +15850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5665216730729925265, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
       propertyPath: m_Name
-      value: Upper Button
+      value: Area2 Button
       objectReference: {fileID: 0}
     - target: {fileID: 5743070448254869877, guid: 15f1f088e89382f438e593f5fdc60d27, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
