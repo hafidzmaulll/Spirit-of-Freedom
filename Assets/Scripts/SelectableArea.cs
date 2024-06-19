@@ -16,7 +16,7 @@ public class SelectableArea : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Selection Canvas is not assigned in the Inspector");
+            // Debug.LogError("Selection Canvas is not assigned in the Inspector");
         }
     }
 
@@ -47,15 +47,27 @@ public class SelectableArea : MonoBehaviour
     }
 
     // Methods to load scenes based on button clicks
-    public void SelectArea1()
+    public void SelectStage1Area2()
     {
         Debug.Log("Loading Scene 3");
         SceneManager.LoadScene(3); // Replace with the correct build index or scene name
     }
 
-    public void SelectArea2()
+    public void SelectStage1Area3()
     {
         Debug.Log("Loading Scene 4");
         SceneManager.LoadScene(4); // Replace with the correct build index or scene name
+    }
+
+    public void SelectStage2Area2()
+    {
+        Debug.Log("Loading Scene 4");
+        SceneManager.LoadScene(7); // Replace with the correct build index or scene name
+    }
+
+    public void SelectStage2Area3()
+    {
+        Debug.Log("Loading Scene 4");
+        SceneManager.LoadScene(8); // Replace with the correct build index or scene name
     }
 }
