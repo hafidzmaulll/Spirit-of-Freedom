@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
             Damageable playerDamageable = other.gameObject.GetComponent<Damageable>();
             if(playerDamageable != null && playerDamageable.IsAlive)
             {
-                playerDamageable.Health -= 20;
+                playerDamageable.Health -= 10;
                 Destroy(gameObject);
             }
         }
