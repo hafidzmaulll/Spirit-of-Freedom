@@ -11,6 +11,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Prolog");
     }
 
+    public void Options()
+    {
+        
+    }
+
     public void QuitGame()
     {
         Application.Quit();
