@@ -49,14 +49,20 @@ public class SelectableArea : MonoBehaviour
     // Methods to load scenes based on button clicks
     public void SelectStage1Area2()
     {
-        Debug.Log("Loading Scene 3");
-        SceneManager.LoadScene(3); // Replace with the correct build index or scene name
+        Debug.Log("Loading Scene 4");
+        SceneManager.LoadScene(4); // Replace with the correct build index or scene name
     }
 
     public void SelectStage1Area3()
     {
-        Debug.Log("Loading Scene 4");
-        SceneManager.LoadScene(4); // Replace with the correct build index or scene name
+        Debug.Log("Loading Scene 5");
+        SceneManager.LoadScene(5); // Replace with the correct build index or scene name
+    }
+
+    public void SelectStage2Area1()
+    {
+        Debug.Log("Loading Scene 8");
+        SceneManager.LoadScene(8); // Replace with the correct build index or scene name
     }
 
     public void SelectStage2Area2()
