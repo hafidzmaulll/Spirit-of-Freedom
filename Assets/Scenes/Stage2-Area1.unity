@@ -14304,7 +14304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1191012558011158088, guid: ebc547d97f02eb14b952fb088ed880ef, type: 3}
       propertyPath: messages.Array.data[0].message
-      value: Tes
+      value: "Ayo saudara saudaraku sekalian, mari kita merdekakan tanah kita\_sekali\_lagi."
       objectReference: {fileID: 0}
     - target: {fileID: 1191012558011158088, guid: ebc547d97f02eb14b952fb088ed880ef, type: 3}
       propertyPath: messages.Array.data[1].actorId
