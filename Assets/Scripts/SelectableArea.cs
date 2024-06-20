@@ -61,19 +61,19 @@ public class SelectableArea : MonoBehaviour
 
     public void SelectStage2Area2()
     {
-        Debug.Log("Loading Scene 4");
-        SceneManager.LoadScene(7); // Replace with the correct build index or scene name
+        Debug.Log("Loading Scene 9");
+        SceneManager.LoadScene(9); // Replace with the correct build index or scene name
     }
 
     public void SelectStage2Area3()
     {
-        Debug.Log("Loading Scene 4");
-        SceneManager.LoadScene(8); // Replace with the correct build index or scene name
+        Debug.Log("Loading Scene 10");
+        SceneManager.LoadScene(10); // Replace with the correct build index or scene name
     }
 
     public void SelectStage2BossArea()
     {
-        Debug.Log("Loading Scene 4");
-        SceneManager.LoadScene(9); // Replace with the correct build index or scene name
+        Debug.Log("Loading Scene 11");
+        SceneManager.LoadScene(11); // Replace with the correct build index or scene name
     }
 }
