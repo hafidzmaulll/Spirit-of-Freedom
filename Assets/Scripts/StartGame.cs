@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("StartArea");
+        SceneManager.LoadScene("Prolog");
     }
 
     public void QuitGame()
