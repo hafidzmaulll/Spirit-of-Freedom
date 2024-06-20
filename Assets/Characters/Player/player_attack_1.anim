@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2857143
+        time: 0.14285715
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -40,7 +40,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.85714287
+        time: 0.42857143
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -61,22 +61,22 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 8798432eddce3ab4caa7bdfa3937b25f, type: 3}
-    - time: 0.14285715
+    - time: 0.071428575
       value: {fileID: 21300000, guid: 5ebd013a94a70eb4588bae81b722b844, type: 3}
-    - time: 0.2857143
+    - time: 0.14285715
       value: {fileID: 21300000, guid: 3145906b727c14a4dbf5e5f6bda50be8, type: 3}
-    - time: 0.42857143
+    - time: 0.21428572
       value: {fileID: 21300000, guid: f5e8d4b78fa73344e9760b588a8bf602, type: 3}
-    - time: 0.5714286
+    - time: 0.2857143
       value: {fileID: 21300000, guid: 3adb7d1d918b21e42bdce3c63705da19, type: 3}
-    - time: 0.71428573
+    - time: 0.35714287
       value: {fileID: 21300000, guid: b83d2853d7871034e92d5dcc4a5c679f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 7
+  m_SampleRate: 14
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -113,7 +113,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.85714287
+    m_StopTime: 0.42857143
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -143,7 +143,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2857143
+        time: 0.14285715
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -152,7 +152,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.85714287
+        time: 0.42857143
         value: 0
         inSlope: Infinity
         outSlope: Infinity
