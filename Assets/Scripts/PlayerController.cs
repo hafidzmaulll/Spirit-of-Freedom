@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
-    public CollectibleManager collectible;
+    // public CollectibleManager collectible;
     public float jumpImpulse = 10f;
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Collectible"))
         {
             Destroy(other.gameObject);
-            collectible.gemCount ++;
+            // collectible.gemCount ++;
         }
     }
 }

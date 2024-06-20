@@ -8,6 +8,8 @@ public class CollectibleManager : MonoBehaviour
 {
     public int gemCount;
     public TextMeshProUGUI gemText;
+    public GameObject Doors;
+    private bool doorsDestroyed;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +20,11 @@ public class CollectibleManager : MonoBehaviour
     void Update()
     {
         gemText.text = "= " + gemCount.ToString();
+
+        if(gemCount == 1 && !doorsDestroyed)
+        {
+            doorsDestroyed = true;
+            Destroy(Doors);
+        }
     }
 }
