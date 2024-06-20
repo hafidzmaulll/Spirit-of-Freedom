@@ -42,6 +42,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage2-Boss.unity
     guid: fcc7b8f9e5bd6464fab33d3e47a213f1
   - enabled: 1
+    path: Assets/Scenes/Epilog.unity
+    guid: 42dd85fc24c73314c8bcb1c0a6987bd0
+  - enabled: 1
     path: Assets/Scenes/QuitScene.unity
     guid: 3998bdfec679d7e42b880c6104659613
+  - enabled: 1
+    path: Assets/Scenes/ControlMenu.unity
+    guid: 1bdbede11a01fc14db866676445ba2fd
   m_configObjects: {}

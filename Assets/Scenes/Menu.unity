@@ -380,8 +380,9 @@ GameObject:
   - component: {fileID: 298094525}
   - component: {fileID: 298094524}
   - component: {fileID: 298094527}
+  - component: {fileID: 298094528}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Control Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,7 +451,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 298094525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 298094528}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: ControlMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &298094525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +531,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &298094528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298094522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2409985e03f328c439fbc2d5f446beb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &426184384
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Control Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e30ee4c637982ef4ebfd7204194e3fb7, type: 2}
   m_sharedMaterial: {fileID: -3430139637091701612, guid: e30ee4c637982ef4ebfd7204194e3fb7, type: 2}
@@ -755,7 +780,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: df2270810712e0142906fce62eb44e62, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.317
   m_Pitch: 1
   Loop: 0
